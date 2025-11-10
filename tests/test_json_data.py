@@ -22,4 +22,10 @@ def test_increase_price_changes_price_by_given_percentage():
 def test_get_best_value_returns_single_doughnut():
     df = create_df('doughnuts.json')
     result = get_best_value(df)
-    assert len(result) == 4
+    assert len(result) == 1
+
+# Test 5 
+def test_get_best_value_returns_cheapest_cost_per_calorie_doughnut():
+    df = create_df('doughnuts.json')
+    result = get_best_value(df)
+    assert result.iloc[0]['doughnut_type'] == 'Choccy Delight'
