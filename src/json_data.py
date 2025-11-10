@@ -4,9 +4,6 @@ def create_df(filename):
     df = pd.read_json(f'data/{filename}')['doughnut_data'].apply(pd.Series)
     return df
 
-df = create_df('doughnuts.json')
-print(df)
-
 def increase_price(df, num):
     if num == 0:
         return df
@@ -16,8 +13,7 @@ def increase_price(df, num):
         new_df['price'] = ((df['price'] * perc) + df['price']).round(2)
         return new_df
 
-df2 = increase_price(df, 10)
-print(df2)
-
 def get_best_value(df):
-    return df.iloc[0]
+    new_df = df.copy()
+    new_df['cost_per_calorie'] = df['price'] / df['calories']
+    return df[new_df['cost_per_calorie'] == new_df['cost_per_calorie'].min()]
