@@ -20,4 +20,4 @@ df2 = increase_price(df, 10)
 print(df2)
 
 def get_best_value(df):
-    pass
+    return df.iloc[0]
