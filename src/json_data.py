@@ -11,9 +11,13 @@ def increase_price(df, num):
     if num == 0:
         return df
     else:
-        price = df['price']
-        increase_by = num / 100
-        new_df = df * increase_by
-    
+        perc = num / 100 
+        new_df = df.copy()
+        new_df['price'] = ((df['price'] * perc) + df['price']).round(2)
+        return new_df
+
+df2 = increase_price(df, 10)
+print(df2)
+
 def get_best_value(df):
     pass
