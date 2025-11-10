@@ -11,3 +11,9 @@ def test_increase_price_returns_same_df_when_passed_zero():
     df = create_df('doughnuts.json')
     df2 = increase_price(df, 0)
     assert df.equals(df2)
+
+# Test 3
+def test_increase_price_changes_price_by_given_percentage():
+    df = create_df('doughnuts.json')
+    df2 = increase_price(df, 10)
+    assert df2['price'] == 10
